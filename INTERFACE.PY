@@ -79,7 +79,6 @@ def iniciar_sistema():
                 entry_cpf.get(),
                 entry_placa.get(),
                 entry_tipo.get(),
-                
             )
             messagebox.showinfo("Sucesso", "Cliente cadastrado!")
             entry_nome.delete(0, tk.END)
@@ -166,24 +165,24 @@ def iniciar_sistema():
     texto.pack(expand=True, fill="both")
 
     def mostrar_clientes():
-     texto.delete("1.0", tk.END)
-    rows = Relatorio.clientes()
+        texto.delete("1.0", tk.END)
+        rows = Relatorio.clientes()
 
-    if not rows:
-        texto.insert(tk.END, "Nenhum cliente cadastrado.\n")
-        return
+        if not rows:
+            texto.insert(tk.END, "Nenhum cliente cadastrado.\n")
+            return
 
-    for (cid, nome, cpf, placa, tipo, valor) in rows:
-        linha = (
-            f"ID: {cid}\n"
-            f"Nome: {nome}\n"
-            f"CPF: {cpf}\n"
-            f"Placa: {placa}\n"
-            f"Tipo: {tipo}\n"
-            f"Valor: R$ {valor:.2f}\n"
-            "-----------------------------\n"
-        )
-        texto.insert(tk.END, linha)
+        for (cid, nome, cpf, placa, tipo, valor) in rows:
+            linha = (
+                f"ID: {cid}\n"
+                f"Nome: {nome}\n"
+                f"CPF: {cpf}\n"
+                f"Placa: {placa}\n"
+                f"Tipo: {tipo}\n"
+                f"Valor: R$ {valor:.2f}\n"
+                "-----------------------------\n"
+            )
+            texto.insert(tk.END, linha)
 
     tk.Button(aba_rel, text="Clientes", command=mostrar_clientes).pack(pady=5)
 
